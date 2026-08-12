@@ -47,28 +47,27 @@ export interface Profile {
 
 export const profileData: Profile = {
   name: "Rahatutzaman Rizon",
-  role: "Full Stack & React Native Engineer | Data Analyst",
+  role: "Software Engineer | Full Stack Developer",
   profileImage: "/images/profile.jpg",
   titles: [
-    "Full Stack Software Engineer",
-    "React Native Mobile Engineer",
-    "Data Analyst & BI Specialist",
-    "ERP & Multi-Tenant SaaS Architect",
-    "AI & RAG Automation Developer",
+    "Software Engineer",
+    "Full Stack Developer",
+    "ERP, CRM & SaaS Specialist",
+    "B2B & AI/RAG Automation Developer",
   ],
-  tagline: "Building scalable multi-tenant ERPs, React Native mobile apps, data analytics solutions, and AI-powered enterprise automation.",
+  tagline: "ERP | SaaS | CRM | B2B | AI & Automation — Building scalable multi-tenant platforms for real-world production clients.",
   heroHook:
-    "I build multi-tenant ERP, CRM, React Native mobile apps, and SaaS platforms — combining robust full-stack engineering with NoSQL/SQL data migration, BI analytics, and AI-powered workflow automation.",
+    "Full Stack Software Engineer with 2+ years building and scaling multi-tenant ERP, CRM, SaaS, B2B, booking, payment, and Shopify platforms for production travel and business-automation systems.",
   location: "Dhaka, Bangladesh",
   email: "rizonrahat199@gmail.com",
   phone: "+8801771276400",
   resumeUrl: "/resume.pdf",
-  availability: "Open for Full-Stack, React Native Mobile & Data Engineering Roles",
-  bio: "I'm a Full Stack Software Engineer, React Native Mobile Developer, and Data Analyst with 2+ years of experience building multi-tenant ERP, CRM, SaaS, mobile applications, and database-driven solutions. I specialize in React, React Native, Next.js, Node.js, Python, NoSQL/SQL data migration, data visualization, and AI/RAG document workflows.",
+  availability: "Open for Full-Stack, ERP, SaaS & AI Automation Roles",
+  bio: "Full Stack Software Engineer with 2+ years building and scaling multi-tenant ERP, CRM, SaaS, B2B, booking, payment, and Shopify platforms for production travel and business-automation systems. Skilled in JavaScript, TypeScript, React.js, Next.js, Node.js, MongoDB, SQL, REST APIs, testing, and Docker, with hands-on experience designing business logic, domain workflows, RBAC-driven multi-tenant architectures, and AI/RAG-powered automation for real-world clients.",
   aboutParagraphs: [
-    "I'm a Full Stack Software Engineer, React Native Mobile Developer, and Data Analyst with 2+ years of hands-on experience designing enterprise-grade multi-tenant ERP, CRM, cross-platform mobile apps, and data analytics dashboards.",
-    "My technical expertise spans Full Stack & Mobile (React.js, React Native, Next.js, Node.js, Express, TypeScript) and Data Systems (SQL/NoSQL database architecture, schema migration, Python Pandas/NumPy, data visualization, ETL, and automated reporting). I specialize in end-to-end solutions — from multi-tenant access control to cross-platform mobile apps.",
-    "Over my career, I've delivered mission-critical travel ERP modules (Flight, Hotel, Visa, Umrah, Accounts, Refund), interactive analytics dashboards, custom Shopify integrations, React Native mobile features, and AI document retrieval engines.",
+    "I'm a Full Stack Software Engineer with 2+ years of hands-on experience building and scaling multi-tenant ERP, CRM, SaaS, B2B, booking, payment, and Shopify platforms for production travel and business-automation systems.",
+    "My technical skills span JavaScript, TypeScript, React.js, Next.js, Node.js, MongoDB, SQL, REST APIs, testing, Docker, Azure DevOps, and CI/CD. I specialize in designing business logic, domain workflows, RBAC-driven multi-tenant architectures, and AI/RAG-powered document retrieval and workflow automation for real-world clients.",
+    "At Implevista, I develop and maintain a multi-tenant travel ERP spanning Flight, Hotel, Visa, Work Visa, Umrah, Tour, CRM, B2B, and Accounts modules, shipping key features for production platforms FTO Travels and FlightTrip.",
   ],
   socials: {
     github: "https://github.com/rahatutzaman-rizon/",
@@ -100,19 +99,19 @@ export const profileData: Profile = {
     {
       label: "Experience",
       value: "2+ Years",
-      description: "Building production ERP, SaaS, Mobile & Analytics apps",
+      description: "Building production ERP, SaaS, CRM & B2B platforms",
       icon: "Briefcase",
     },
     {
       label: "Problem Solving",
       value: "500+",
-      description: "Solved on LeetCode, CodeChef & Beecrowd",
+      description: "Solved across LeetCode, CodeChef & Beecrowd",
       icon: "Code2",
     },
     {
-      label: "Database & Migration",
-      value: "SQL / NoSQL",
-      description: "Data migration, indexing & multi-tenant isolation",
+      label: "Database & Architecture",
+      value: "SQL & NoSQL",
+      description: "MongoDB, MySQL, PostgreSQL & Schema Design",
       icon: "Database",
     },
     {
@@ -123,11 +122,11 @@ export const profileData: Profile = {
     },
   ],
   keyHighlights: [
-    "Architected multi-tenant travel ERP & data analytics modules (Flight, Hotel, Visa, Accounts, Invoicing, Refunds)",
-    "Engineered React Native mobile app components and cross-platform UI workflows for iOS & Android",
-    "Executed NoSQL & relational database schema migrations, query tuning, and multi-tenant data isolation",
-    "Built data visualization pipelines & business intelligence dashboards using Python & modern web tech",
-    "Integrated AI/RAG contextual document search, vector retrieval, and email workflow automation",
+    "Develop and maintain multi-tenant travel ERP (Flight, Hotel, Visa, Work Visa, Umrah, Tour, CRM, B2B, Accounts)",
+    "Build & ship production features for FTO Travels and FlightTrip using React.js, Next.js, Node.js, TypeScript & MongoDB",
+    "Architect business logic, RBAC, authentication, tenant-aware data access, booking, payment, invoice, refund & reporting",
+    "Contribute to AI/RAG-based document retrieval and workflow automation applying modern AI-assisted tools",
+    "Own testing, debugging, code reviews, CI/CD, Docker, Git, Azure DevOps, and production deployment",
   ],
   spokenLanguages: [
     {
