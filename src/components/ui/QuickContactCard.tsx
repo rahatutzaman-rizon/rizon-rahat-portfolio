@@ -8,27 +8,42 @@ import { profileData } from "@/data/profile";
 
 export function QuickContactCard() {
   const [isVisible, setIsVisible] = useState(false);
-  const [isDismissed, setIsDismissed] = useState(false);
+  const [isMinimized, setIsMinimized] = useState(false);
 
   useEffect(() => {
-    // Show card automatically after 2.5 seconds
+    // Show card automatically after 4.5 seconds
     const timer = setTimeout(() => {
-      const dismissed = sessionStorage.getItem("contact_popup_dismissed");
-      if (!dismissed) {
-        setIsVisible(true);
-      }
-    }, 2500);
+      setIsVisible(true);
+    }, 4500);
 
     return () => clearTimeout(timer);
   }, []);
 
-  const handleDismiss = () => {
+  const handleMinimize = () => {
     setIsVisible(false);
-    setIsDismissed(true);
-    sessionStorage.setItem("contact_popup_dismissed", "true");
+    setIsMinimized(true);
   };
 
-  if (isDismissed) return null;
+  const handleExpand = () => {
+    setIsVisible(true);
+    setIsMinimized(false);
+  };
+
+  return (
+    <>
+      {/* Persistent Floating Quick Contact Launcher Button when Minimized */}
+      {isMinimized && !isVisible && (
+        <motion.button
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          onClick={handleExpand}
+          className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-2.5 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-xl shadow-emerald-500/30 transition-transform hover:scale-105"
+          title="Direct Connect on WhatsApp & Messenger"
+        >
+          <Phone className="w-4 h-4 animate-bounce" />
+          <span>WhatsApp &amp; Messenger</span>
+        </motion.button>
+      )}
 
   return (
     <AnimatePresence>
@@ -63,7 +78,7 @@ export function QuickContactCard() {
             </div>
 
             <button
-              onClick={handleDismiss}
+              onClick={handleMinimize}
               className="p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors"
               aria-label="Close Contact Card"
             >
@@ -73,7 +88,7 @@ export function QuickContactCard() {
 
           {/* Quick Intro Message */}
           <p className="text-xs text-slate-700 dark:text-slate-300 leading-snug font-medium">
-            Need a Full Stack Engineer or Data Analyst? Let's connect directly on WhatsApp or Messenger!
+            Need a Full Stack Engineer, React Native Developer or Data Analyst? Let's connect directly on WhatsApp or Messenger!
           </p>
 
           {/* Quick Connect Action Buttons */}
@@ -109,5 +124,6 @@ export function QuickContactCard() {
         </motion.div>
       )}
     </AnimatePresence>
+    </>
   );
 }

@@ -106,8 +106,9 @@ export function Hero() {
             <div className="flex flex-wrap gap-2 pt-1">
               {[
                 "Full Stack Eng",
+                "React Native Mobile",
+                "NoSQL & Data Migration",
                 "Data Analysis & BI",
-                "SQL Tuning (+45%)",
                 "React & Next.js",
                 "Node.js & Python",
                 "AI / RAG Search",
@@ -137,6 +138,26 @@ export function Hero() {
                   </span>
                 ))}
               </div>
+            </div>
+
+            {/* Competitive Programming Shield Badges Bar */}
+            <div className="pt-2 flex flex-wrap items-center gap-2">
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 font-semibold mr-1">
+                CP Profiles:
+              </span>
+              {profileData.cpProfiles.map((cp) => (
+                <a
+                  key={cp.name}
+                  href={cp.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:scale-105 transition-transform inline-block"
+                  title={`${cp.name} Profile (${cp.username})`}
+                >
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={cp.badgeUrl} alt={cp.name} className="h-6 rounded shadow-sm" />
+                </a>
+              ))}
             </div>
 
             {/* CTA Buttons */}
@@ -264,11 +285,11 @@ export function Hero() {
                 </div>
 
                 <div className="absolute top-8 -right-2 sm:-right-4 px-3 py-1 rounded-full bg-slate-900/90 text-indigo-400 border border-indigo-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
-                  <BarChart3 className="w-3.5 h-3.5" /> Data Analyst
+                  <BarChart3 className="w-3.5 h-3.5" /> React Native
                 </div>
 
                 <div className="absolute bottom-4 -left-2 sm:-left-4 px-3 py-1 rounded-full bg-slate-900/90 text-emerald-400 border border-emerald-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
-                  <TrendingUp className="w-3.5 h-3.5" /> +45% SQL Speed
+                  <TrendingUp className="w-3.5 h-3.5" /> NoSQL & Migration
                 </div>
 
                 <div className="absolute -bottom-3 right-0 sm:right-2 px-3 py-1 rounded-full bg-slate-900/90 text-amber-400 border border-amber-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
@@ -336,7 +357,7 @@ export function Hero() {
                       expertise: <span className="text-emerald-400">&quot;SQL & Business Intelligence&quot;</span>,
                     </p>
                     <p className="pl-4">
-                      queryOptimization: <span className="text-cyan-300">&quot;+45% execution speed&quot;</span>,
+                      dataSystems: <span className="text-cyan-300">&quot;NoSQL &amp; Schema Migration&quot;</span>,
                     </p>
                     <p className="pl-4">
                       tools: [<span className="text-amber-300">&quot;Python&quot;</span>, <span className="text-amber-300">&quot;Pandas&quot;</span>, <span className="text-amber-300">&quot;Tableau&quot;</span>],
@@ -353,11 +374,11 @@ export function Hero() {
               <div className="grid grid-cols-2 gap-3 pt-2">
                 <div className="p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-center">
                   <div className="text-xl font-bold text-dynamic-primary font-mono">2+ Years</div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">Full Stack & Analytics</div>
+                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">Full Stack &amp; Analytics</div>
                 </div>
                 <div className="p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-center">
-                  <div className="text-xl font-bold text-gradient-dynamic font-mono">+45% Speed</div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">SQL Performance</div>
+                  <div className="text-xl font-bold text-gradient-dynamic font-mono">SQL / NoSQL</div>
+                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">Data Migration</div>
                 </div>
               </div>
 

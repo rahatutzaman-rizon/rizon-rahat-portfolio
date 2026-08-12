@@ -149,6 +149,50 @@ export function EducationAchievements() {
                       </span>
                     ))}
                   </div>
+
+                  {item.id === "cp-500" && (
+                    <div className="pt-2 flex flex-wrap items-center gap-1.5 border-t border-slate-200 dark:border-slate-800">
+                      <a
+                        href="https://leetcode.com/u/rizon525/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:scale-105 transition-transform inline-block"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://img.shields.io/badge/LeetCode-rizon525-FFA116?style=for-the-badge&logo=leetcode&logoColor=black"
+                          alt="LeetCode Profile"
+                          className="h-5 rounded shadow-sm"
+                        />
+                      </a>
+                      <a
+                        href="https://www.codechef.com/users/redwantamim525"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:scale-105 transition-transform inline-block"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://img.shields.io/badge/CodeChef-redwantamim525-5B4638?style=for-the-badge&logo=codechef&logoColor=white"
+                          alt="CodeChef Profile"
+                          className="h-5 rounded shadow-sm"
+                        />
+                      </a>
+                      <a
+                        href="https://judge.beecrowd.com/en/profile/334994"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:scale-105 transition-transform inline-block"
+                      >
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="https://img.shields.io/badge/Beecrowd-View_Profile-6021D1?style=for-the-badge"
+                          alt="Beecrowd Profile"
+                          className="h-5 rounded shadow-sm"
+                        />
+                      </a>
+                    </div>
+                  )}
                 </motion.div>
               ))}
             </div>

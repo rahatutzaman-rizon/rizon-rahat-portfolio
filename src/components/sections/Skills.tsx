@@ -16,6 +16,7 @@ import {
   Cpu,
   Star,
   BarChart3,
+  Smartphone,
 } from "lucide-react";
 
 export function Skills() {
@@ -36,6 +37,7 @@ export function Skills() {
     Cloud: <Cloud className="w-4 h-4" />,
     Cpu: <Cpu className="w-4 h-4" />,
     BarChart3: <BarChart3 className="w-4 h-4" />,
+    Smartphone: <Smartphone className="w-4 h-4" />,
   };
 
   const filteredCategories =

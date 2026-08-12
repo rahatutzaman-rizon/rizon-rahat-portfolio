@@ -4,6 +4,8 @@ import { Skills } from "@/components/sections/Skills";
 import { AiPlayground } from "@/components/sections/AiPlayground";
 import { Experience } from "@/components/sections/Experience";
 import { Projects } from "@/components/sections/Projects";
+import { EducationAchievements } from "@/components/sections/EducationAchievements";
+import { TechNews } from "@/components/sections/TechNews";
 import { Contact } from "@/components/sections/Contact";
 
 export default function Home() {
@@ -15,6 +17,8 @@ export default function Home() {
       <AiPlayground />
       <Experience />
       <Projects />
+      <EducationAchievements />
+      <TechNews />
       <Contact />
     </main>
   );

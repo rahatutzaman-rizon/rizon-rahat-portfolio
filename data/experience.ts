@@ -107,7 +107,7 @@ export const experienceData: ExperienceItem[] = [
       "Collaborated using Git branch strategies, code reviews, and Agile daily standup sprints.",
     ],
     achievements: [
-      "Optimized heavy enterprise SQL queries, improving execution speed by approximately 45%.",
+      "Optimized heavy enterprise SQL queries and indexes, significantly boosting query response times and reducing database server load.",
       "Authored comprehensive API documentation and test suites adopted by incoming developers.",
     ],
     technologies: [

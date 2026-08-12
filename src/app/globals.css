@@ -89,7 +89,7 @@ body {
   color: #f8fafc;
 }
 
-/* Automatic conversion of dark text to white/light slate in dark mode */
+/* Dark mode text color defaults */
 .dark h1,
 .dark h2,
 .dark h3,
@@ -99,27 +99,27 @@ body {
   color: #ffffff;
 }
 
-.dark .text-slate-900,
-.dark .text-slate-800,
-.dark .text-black,
-.dark .text-gray-900,
-.dark .text-gray-800,
-.dark .text-zinc-900,
-.dark .text-zinc-800 {
-  color: #ffffff !important;
+/* Ensure text inside elements with light backgrounds remains dark and readable */
+.dark .bg-white,
+.dark .bg-slate-100,
+.dark .bg-slate-200,
+.dark .bg-slate-300 {
+  color: #0f172a;
 }
 
-.dark .text-slate-700,
-.dark .text-slate-600,
-.dark .text-gray-700,
-.dark .text-zinc-700 {
-  color: #e2e8f0 !important;
-}
-
-.dark .text-slate-500,
-.dark .text-gray-500,
-.dark .text-zinc-500 {
-  color: #cbd5e1 !important;
+.dark .bg-white h1,
+.dark .bg-white h2,
+.dark .bg-white h3,
+.dark .bg-white h4,
+.dark .bg-white h5,
+.dark .bg-white h6,
+.dark .bg-white p,
+.dark .bg-white span,
+.dark .bg-slate-100 p,
+.dark .bg-slate-100 span,
+.dark .bg-slate-200 p,
+.dark .bg-slate-200 span {
+  color: #0f172a;
 }
 
 ::selection {

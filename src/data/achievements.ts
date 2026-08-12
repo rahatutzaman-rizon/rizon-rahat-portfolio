@@ -34,13 +34,13 @@ export const achievementsData: AchievementItem[] = [
   },
   {
     id: "db-optimization",
-    title: "45% Enterprise SQL Query Optimization",
+    title: "Enterprise Database & NoSQL Schema Migration",
     category: "Optimization",
-    metric: "45% Speedup",
+    metric: "SQL & NoSQL",
     description:
-      "Engineered database indexing, query restructuring, and execution plan optimization at Business Automation Ltd, reducing database query overhead by ~45%.",
+      "Engineered database indexing, schema transformations, and NoSQL document migrations at Business Automation Ltd, optimizing multi-tenant data boundaries.",
     iconName: "Zap",
-    tags: ["SQL", "MySQL", "Indexing", "Performance Tuning"],
+    tags: ["SQL", "NoSQL", "MongoDB", "Data Migration", "Performance"],
     gradient: "from-emerald-500/20 to-teal-500/20",
   },
   {

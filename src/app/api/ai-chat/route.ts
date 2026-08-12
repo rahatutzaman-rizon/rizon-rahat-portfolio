@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     if (query.includes("business") || query.includes("analysis") || query.includes("requirement") || query.includes("spec") || query.includes("brd")) {
       sources.push("Business Analysis & Systems", "skills.ts");
       contextSnippets.push(
-        "Rizon specializes in Business Analysis, BRD/PRD requirement gathering, enterprise ERP process workflow mapping, SQL query optimization (+45% speedup), and multi-tenant data boundary design."
+        "Rizon specializes in Business Analysis, BRD/PRD requirement gathering, enterprise ERP process workflow mapping, NoSQL/SQL schema migration, React Native mobile apps, and multi-tenant data boundary design."
       );
     }
 
