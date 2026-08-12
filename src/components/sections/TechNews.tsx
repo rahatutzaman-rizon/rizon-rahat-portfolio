@@ -189,7 +189,7 @@ export function TechNews() {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-sm">
               <Calendar className="w-3.5 h-3.5 text-dynamic-primary" />
               <span>Rolling 7-Day Window: </span>
-              <strong className="text-dynamic-primary font-bold">{apiData.dateRangeLabel || dateRangeLabel}</strong>
+              <strong className="text-dynamic-primary font-bold">{apiData.dateRangeLabel}</strong>
             </div>
 
             <Link

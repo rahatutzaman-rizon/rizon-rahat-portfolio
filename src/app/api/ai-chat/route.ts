@@ -27,7 +27,7 @@ export async function POST(req: Request) {
       const topProjects = projectsData.slice(0, 3);
       sources.push("projects.ts", "FTO Travels ERP", "FlightTrip Platform");
       contextSnippets.push(
-        ...topProjects.map((p) => `${p.title} (${p.category}): ${p.shortDescription} Core Tech: ${p.technologies.slice(0, 4).join(", ")}.`)
+        ...topProjects.map((p) => `${p.title} (${p.category}): ${p.shortDescription} Core Tech: ${p.tags.slice(0, 4).join(", ")}.`)
       );
     }
 
