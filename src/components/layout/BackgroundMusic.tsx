@@ -1,18 +1,26 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Volume2, VolumeX, Music, Play, Pause } from "lucide-react";
 import { toast } from "sonner";
 import { useColorTheme } from "@/context/ColorThemeContext";
 
-const YOUTUBE_VIDEO_ID = "sLGYV48cOf0";
-const SONG_TITLE = "Stay — Pop Instrumental";
+const YOUTUBE_VIDEO_ID = "-UfI1X-MSig";
+const SONG_TITLE = "Bliss — Lofi Hip Hop Beat";
 
 export function BackgroundMusic() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement | null>(null);
   const { activePreset } = useColorTheme();
+
+  useEffect(() => {
+    // Attempt automatic playback on initial load
+    const timer = setTimeout(() => {
+      sendIframeCommand("playVideo");
+    }, 1000);
+    return () => clearTimeout(timer);
+  }, []);
 
   const sendIframeCommand = (command: string, args: string = "") => {
     if (iframeRef.current && iframeRef.current.contentWindow) {
@@ -32,7 +40,7 @@ export function BackgroundMusic() {
       sendIframeCommand("playVideo");
       setIsPlaying(true);
       toast.success(`🎵 Playing "${SONG_TITLE}"`, {
-        description: "Enjoy the chill pop instrumental beat while exploring the portfolio.",
+        description: "Enjoy the chill bliss lofi beat while exploring the portfolio.",
       });
     }
   };
@@ -55,7 +63,7 @@ export function BackgroundMusic() {
         id="bg-music-youtube-iframe"
         width="1"
         height="1"
-        src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=0&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0`}
+        src={`https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&controls=0`}
         title={SONG_TITLE}
         className="absolute top-0 left-0 w-0 h-0 opacity-0 pointer-events-none border-none"
         allow="autoplay; encrypted-media"

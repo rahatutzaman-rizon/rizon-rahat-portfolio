@@ -8,6 +8,7 @@ import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { GsapCursor } from "@/components/ui/GsapCursor";
+import { QuickContactCard } from "@/components/ui/QuickContactCard";
 import { Toaster } from "sonner";
 
 const inter = Inter({
@@ -73,7 +74,7 @@ export default function RootLayout({
       >
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
@@ -84,6 +85,7 @@ export default function RootLayout({
                 <Navbar />
                 <div className="flex-1">{children}</div>
                 <Footer />
+                <QuickContactCard />
                 <Toaster position="bottom-right" richColors />
               </ColorThemeProvider>
             </AnalyticsProvider>

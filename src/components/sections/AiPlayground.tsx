@@ -68,6 +68,7 @@ export function AiPlayground() {
         <div className="flex flex-wrap items-center justify-center gap-2 mb-10">
           {[
             { id: "rag", label: "Access-Control RAG Engine", icon: <Search className="w-4 h-4" /> },
+            { id: "automation", label: "Enterprise Workflow Automation", icon: <Zap className="w-4 h-4" /> },
             { id: "agents", label: "Multi-Agent Handoffs", icon: <Bot className="w-4 h-4" /> },
             { id: "extraction", label: "Structured PDF → JSON", icon: <FileText className="w-4 h-4" /> },
             { id: "guardrails", label: "Reliability & Guardrails", icon: <ShieldCheck className="w-4 h-4" /> },
@@ -181,6 +182,83 @@ export function AiPlayground() {
                     </div>
                   </div>
                 )}
+              </motion.div>
+            )}
+
+            {/* Tab: Enterprise Workflow Automation */}
+            {activeTab === "automation" && (
+              <motion.div
+                key="automation"
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                className="space-y-6"
+              >
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+                  <div>
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                      <Zap className="w-5 h-5 text-amber-500" /> Automated Enterprise AI Workflows
+                    </h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-300 font-medium">
+                      Event-driven pipelines connecting incoming customer webhooks, AI analysis, CRM database updates, and automated email actions.
+                    </p>
+                  </div>
+                  <span className="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 font-mono text-xs font-bold self-start md:self-auto">
+                    Automation Engine
+                  </span>
+                </div>
+
+                {/* Visual Workflow Steps */}
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                  {[
+                    {
+                      step: "01. Webhook Event",
+                      title: "Flight Refund Request",
+                      desc: "Customer submits booking refund form via B2B Portal.",
+                      badge: "Triggered",
+                      badgeColor: "bg-blue-500/10 text-blue-500 border-blue-500/30",
+                    },
+                    {
+                      step: "02. AI RAG Validation",
+                      title: "Policy & Rule Match",
+                      desc: "LLM checks tenant fare rules & SQL ledger state.",
+                      badge: "Validating (99.4%)",
+                      badgeColor: "bg-cyan-500/10 text-cyan-500 border-cyan-500/30",
+                    },
+                    {
+                      step: "03. ERP Ledger Update",
+                      title: "SQL Transaction",
+                      desc: "Auto-executes credit note & updates accounts.",
+                      badge: "Executed (42ms)",
+                      badgeColor: "bg-emerald-500/10 text-emerald-500 border-emerald-500/30",
+                    },
+                    {
+                      step: "04. Notification & PDF",
+                      title: "Auto Email & Invoice",
+                      desc: "Generates refund PDF & dispatches email notification.",
+                      badge: "Dispatched",
+                      badgeColor: "bg-indigo-500/10 text-indigo-500 border-indigo-500/30",
+                    },
+                  ].map((wf, idx) => (
+                    <div
+                      key={idx}
+                      className="p-5 rounded-2xl bg-slate-100/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800 space-y-3 relative hover:border-amber-500/50 transition-all duration-300"
+                    >
+                      <span className="text-[11px] font-mono font-bold text-slate-400">
+                        {wf.step}
+                      </span>
+                      <h4 className="font-bold text-sm text-slate-900 dark:text-white">
+                        {wf.title}
+                      </h4>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed font-medium">
+                        {wf.desc}
+                      </p>
+                      <span className={`inline-block px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold border ${wf.badgeColor}`}>
+                        {wf.badge}
+                      </span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             )}
 
