@@ -130,12 +130,22 @@ export function About() {
               </div>
             </div>
 
-            <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80">
+            <div className="pt-4 border-t border-slate-200 dark:border-slate-800/80 space-y-3">
               <div className="p-4 rounded-xl bg-slate-100/80 dark:bg-slate-900/60 border border-slate-200 dark:border-slate-800">
                 <p className="text-xs text-slate-600 dark:text-slate-300 italic">
                   &quot;I believe engineering is about clean abstractions, predictable state, robust data pipelines, and continuous query optimization.&quot;
                 </p>
               </div>
+
+              <a
+                href={profileData.resumeUrl}
+                download="Rahatutzaman_Rizon_CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl font-bold text-xs text-white bg-gradient-to-r from-cyan-500 to-indigo-600 hover:from-cyan-600 hover:to-indigo-700 shadow-md shadow-cyan-500/20 transition-all hover:scale-[1.01]"
+              >
+                <span>Download Official CV (PDF)</span>
+              </a>
             </div>
           </div>
 
