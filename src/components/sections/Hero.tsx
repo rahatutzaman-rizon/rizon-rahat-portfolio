@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { profileData } from "@/data/profile";
 import { Hero3DCanvas } from "@/components/3d/Hero3DCanvas";
@@ -16,11 +17,17 @@ import {
   Sparkles,
   Terminal,
   Box,
+  BarChart3,
+  TrendingUp,
+  Globe2,
+  CheckCircle2,
+  Code2,
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/ui/icons";
 
 export function Hero() {
   const [currentTitleIndex, setCurrentTitleIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<"engineer" | "analyst">("engineer");
   const cardTiltRef = useGsapCardTilt<HTMLDivElement>();
   const { t } = useLanguage();
 
@@ -36,8 +43,8 @@ export function Hero() {
       {/* Background Grid & Dynamic Ambient Glows */}
       <div className="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-30 pointer-events-none" />
       
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-dynamic-glow blur-[130px] rounded-full pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-10 right-10 w-72 h-72 bg-dynamic-glow blur-[100px] rounded-full pointer-events-none opacity-60" />
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[650px] h-[380px] bg-dynamic-glow blur-[140px] rounded-full pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-10 right-10 w-80 h-80 bg-dynamic-glow blur-[120px] rounded-full pointer-events-none opacity-60" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
@@ -50,17 +57,17 @@ export function Hero() {
             className="lg:col-span-7 space-y-6 text-left"
           >
             {/* Status Pill */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-xs font-medium text-slate-800 dark:text-slate-200 shadow-sm backdrop-blur-md">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-dynamic-primary opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-dynamic-primary"></span>
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200/80 dark:border-slate-800 text-xs font-medium text-slate-800 dark:text-slate-200 shadow-md backdrop-blur-md">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
               </span>
               <span className="font-mono text-dynamic-primary font-semibold">
                 {t("availableForRoles")}
               </span>
-              <span className="text-slate-400 dark:text-slate-600">|</span>
-              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300">
-                <MapPin className="w-3 h-3 text-rose-500" />
+              <span className="text-slate-300 dark:text-slate-700">|</span>
+              <span className="flex items-center gap-1 text-slate-700 dark:text-slate-300 font-medium">
+                <MapPin className="w-3.5 h-3.5 text-rose-500" />
                 {profileData.location}
               </span>
             </div>
@@ -92,25 +99,44 @@ export function Hero() {
 
             {/* Hook Paragraph */}
             <p className="text-base sm:text-lg text-slate-700 dark:text-slate-200 leading-relaxed max-w-2xl font-medium">
-              {t("heroHook")}
+              {profileData.heroHook}
             </p>
 
             {/* Key Skill Badges Row */}
             <div className="flex flex-wrap gap-2 pt-1">
               {[
-                "Multi-Tenant ERP",
+                "Full Stack Eng",
+                "Data Analysis & BI",
+                "SQL Tuning (+45%)",
                 "React & Next.js",
-                "Node.js & MongoDB",
-                "AI / RAG Workflows",
-                "Azure & Docker",
+                "Node.js & Python",
+                "AI / RAG Search",
               ].map((badge) => (
                 <span
                   key={badge}
-                  className="px-2.5 py-1 rounded-md text-xs font-mono bg-slate-200/80 dark:bg-slate-800/80 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700/80"
+                  className="px-3 py-1 rounded-full text-xs font-mono bg-slate-200/90 dark:bg-slate-800/90 text-slate-800 dark:text-slate-200 border border-slate-300 dark:border-slate-700 shadow-sm"
                 >
                   #{badge}
                 </span>
               ))}
+            </div>
+
+            {/* Spoken Languages Quick Preview */}
+            <div className="flex items-center gap-3 pt-2">
+              <span className="text-xs font-mono text-slate-500 dark:text-slate-400 flex items-center gap-1">
+                <Globe2 className="w-3.5 h-3.5 text-dynamic-primary" /> Languages:
+              </span>
+              <div className="flex items-center gap-2 text-xs font-semibold">
+                {profileData.spokenLanguages.map((lang) => (
+                  <span
+                    key={lang.name}
+                    className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300"
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.name}</span>
+                  </span>
+                ))}
+              </div>
             </div>
 
             {/* CTA Buttons */}
@@ -194,7 +220,7 @@ export function Hero() {
             </div>
           </motion.div>
 
-          {/* Right Interactive 3D Showcase & Code Terminal Mockup */}
+          {/* Right Showcase: Profile Portrait Card + Code Terminal */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -206,60 +232,132 @@ export function Hero() {
               <Hero3DCanvas />
             </div>
 
-            {/* GSAP Interactive 3D Tilt Card */}
+            {/* GSAP Interactive 3D Tilt Card Container */}
             <div
               ref={cardTiltRef}
-              className="relative z-10 rounded-2xl overflow-hidden glass-card p-6 shadow-2xl border border-slate-200/80 dark:border-slate-800 backdrop-blur-xl"
+              className="relative z-10 rounded-3xl overflow-hidden glass-card p-6 shadow-2xl border border-slate-200/90 dark:border-slate-800 backdrop-blur-xl space-y-6"
             >
-              {/* Terminal Top Bar */}
-              <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800/80 mb-5">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 rounded-full bg-rose-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-amber-500/80" />
-                  <div className="w-3 h-3 rounded-full bg-emerald-500/80" />
-                  <span className="text-xs font-mono text-slate-600 dark:text-slate-300 ml-2 flex items-center gap-1 font-semibold">
-                    <Box className="w-3 h-3 text-dynamic-primary" /> {t("developerProfileTs")}
-                  </span>
+              {/* Profile Image & Floating Skill Badges */}
+              <div className="relative flex flex-col items-center">
+                {/* Glowing Outer Ring */}
+                <div className="relative w-44 h-44 sm:w-52 sm:h-52 rounded-full p-1.5 bg-gradient-to-tr from-cyan-500 via-indigo-500 to-purple-600 shadow-xl shadow-cyan-500/20 group">
+                  <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/40 dark:border-slate-900/60 bg-slate-900">
+                    <Image
+                      src={profileData.profileImage}
+                      alt={profileData.name}
+                      fill
+                      priority
+                      className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 176px, 208px"
+                    />
+                  </div>
+
+                  {/* Status Indicator Dot */}
+                  <div className="absolute bottom-2 right-2 p-1 bg-white dark:bg-slate-900 rounded-full shadow-lg">
+                    <div className="w-4 h-4 rounded-full bg-emerald-500 animate-pulse border-2 border-white dark:border-slate-900" />
+                  </div>
                 </div>
-                <Terminal className="w-4 h-4 text-dynamic-primary" />
+
+                {/* Floating Skill Chips Over Image */}
+                <div className="absolute -top-2 left-0 sm:-left-2 px-3 py-1 rounded-full bg-slate-900/90 text-cyan-400 border border-cyan-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
+                  <Code2 className="w-3.5 h-3.5" /> Full Stack Eng
+                </div>
+
+                <div className="absolute top-8 -right-2 sm:-right-4 px-3 py-1 rounded-full bg-slate-900/90 text-indigo-400 border border-indigo-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
+                  <BarChart3 className="w-3.5 h-3.5" /> Data Analyst
+                </div>
+
+                <div className="absolute bottom-4 -left-2 sm:-left-4 px-3 py-1 rounded-full bg-slate-900/90 text-emerald-400 border border-emerald-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
+                  <TrendingUp className="w-3.5 h-3.5" /> +45% SQL Speed
+                </div>
+
+                <div className="absolute -bottom-3 right-0 sm:right-2 px-3 py-1 rounded-full bg-slate-900/90 text-amber-400 border border-amber-500/40 text-[11px] font-mono font-bold shadow-lg flex items-center gap-1 backdrop-blur-md">
+                  <CheckCircle2 className="w-3.5 h-3.5" /> 500+ CP Solved
+                </div>
               </div>
 
-              {/* Code Snippet Display */}
-              <div className="space-y-3 font-mono text-xs leading-relaxed text-slate-800 dark:text-slate-200 font-medium">
-                <p>
-                  <span className="text-purple-600 dark:text-purple-400">const</span>{" "}
-                  <span className="text-dynamic-primary font-bold">engineer</span> = &#123;
-                </p>
-                <p className="pl-4">
-                  name: <span className="text-emerald-600 dark:text-emerald-400">&quot;{profileData.name}&quot;</span>,
-                </p>
-                <p className="pl-4">
-                  specialty: <span className="text-amber-600 dark:text-amber-400">&quot;Multi-Tenant ERP & SaaS&quot;</span>,
-                </p>
-                <p className="pl-4">
-                  stack: [<span className="text-dynamic-primary">&quot;Next.js&quot;</span>, <span className="text-dynamic-primary">&quot;Node.js&quot;</span>, <span className="text-dynamic-primary">&quot;MongoDB&quot;</span>, <span className="text-dynamic-primary">&quot;Azure&quot;</span>],
-                </p>
-                <p className="pl-4">
-                  aiIntegration: <span className="text-indigo-500 dark:text-indigo-400">true</span>, // RAG & Vector Search
-                </p>
-                <p className="pl-4">
-                  sqlOptimization: <span className="text-emerald-500 dark:text-emerald-400">&quot;+45% query speedup&quot;</span>,
-                </p>
-                <p className="pl-4">
-                  problemSolving: <span className="text-amber-500 dark:text-amber-400">&quot;500+ CP Solved&quot;</span>,
-                </p>
-                <p>&#125;;</p>
+              {/* Tab Selector & Code Terminal Box */}
+              <div className="rounded-2xl bg-slate-900/90 border border-slate-800 p-4 text-slate-200 shadow-inner space-y-3">
+                {/* Tab Controls */}
+                <div className="flex items-center justify-between border-b border-slate-800 pb-2.5">
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setActiveTab("engineer")}
+                      className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-colors flex items-center gap-1 ${
+                        activeTab === "engineer"
+                          ? "bg-cyan-500/20 text-cyan-400 border border-cyan-500/40"
+                          : "text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      <Terminal className="w-3.5 h-3.5" /> Engineer
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("analyst")}
+                      className={`px-2.5 py-1 rounded-md text-xs font-mono font-semibold transition-colors flex items-center gap-1 ${
+                        activeTab === "analyst"
+                          ? "bg-indigo-500/20 text-indigo-400 border border-indigo-500/40"
+                          : "text-slate-400 hover:text-slate-200"
+                      }`}
+                    >
+                      <BarChart3 className="w-3.5 h-3.5" /> Analyst
+                    </button>
+                  </div>
+                  <span className="text-[11px] font-mono text-slate-500">profile.ts</span>
+                </div>
+
+                {/* Code Terminal View */}
+                {activeTab === "engineer" ? (
+                  <div className="space-y-2 font-mono text-xs leading-relaxed text-slate-300">
+                    <p>
+                      <span className="text-purple-400">const</span>{" "}
+                      <span className="text-cyan-400 font-bold">fullStackDev</span> = &#123;
+                    </p>
+                    <p className="pl-4">
+                      name: <span className="text-emerald-400">&quot;{profileData.name}&quot;</span>,
+                    </p>
+                    <p className="pl-4">
+                      core: [<span className="text-cyan-300">&quot;React&quot;</span>, <span className="text-cyan-300">&quot;Next.js&quot;</span>, <span className="text-cyan-300">&quot;Node.js&quot;</span>],
+                    </p>
+                    <p className="pl-4">
+                      systems: <span className="text-amber-400">&quot;Multi-Tenant ERP & SaaS&quot;</span>,
+                    </p>
+                    <p className="pl-4">
+                      aiIntegration: <span className="text-indigo-400">true</span>, // RAG Search
+                    </p>
+                    <p>&#125;;</p>
+                  </div>
+                ) : (
+                  <div className="space-y-2 font-mono text-xs leading-relaxed text-slate-300">
+                    <p>
+                      <span className="text-purple-400">const</span>{" "}
+                      <span className="text-indigo-400 font-bold">dataAnalyst</span> = &#123;
+                    </p>
+                    <p className="pl-4">
+                      expertise: <span className="text-emerald-400">&quot;SQL & Business Intelligence&quot;</span>,
+                    </p>
+                    <p className="pl-4">
+                      queryOptimization: <span className="text-cyan-300">&quot;+45% execution speed&quot;</span>,
+                    </p>
+                    <p className="pl-4">
+                      tools: [<span className="text-amber-300">&quot;Python&quot;</span>, <span className="text-amber-300">&quot;Pandas&quot;</span>, <span className="text-amber-300">&quot;Tableau&quot;</span>],
+                    </p>
+                    <p className="pl-4">
+                      languages: <span className="text-emerald-300">&quot;EN, BN, HI, ES&quot;</span>,
+                    </p>
+                    <p>&#125;;</p>
+                  </div>
+                )}
               </div>
 
               {/* Quick Highlight Stats Row */}
-              <div className="grid grid-cols-2 gap-3 pt-6 mt-6 border-t border-slate-200 dark:border-slate-800/80">
-                <div className="p-3 rounded-xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800/60">
+              <div className="grid grid-cols-2 gap-3 pt-2">
+                <div className="p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-center">
                   <div className="text-xl font-bold text-dynamic-primary font-mono">2+ Years</div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-300 font-medium">{t("fullStackEng")}</div>
+                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">Full Stack & Analytics</div>
                 </div>
-                <div className="p-3 rounded-xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/60 dark:border-slate-800/60">
-                  <div className="text-xl font-bold text-gradient-dynamic font-mono">500+ CP</div>
-                  <div className="text-[11px] text-slate-600 dark:text-slate-300 font-medium">{t("problemsSolved")}</div>
+                <div className="p-3 rounded-2xl bg-slate-100/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-800/80 text-center">
+                  <div className="text-xl font-bold text-gradient-dynamic font-mono">+45% Speed</div>
+                  <div className="text-[11px] text-slate-600 dark:text-slate-400 font-medium">SQL Performance</div>
                 </div>
               </div>
 
@@ -271,3 +369,4 @@ export function Hero() {
     </section>
   );
 }
+

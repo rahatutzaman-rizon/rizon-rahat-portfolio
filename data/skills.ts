@@ -13,6 +13,22 @@ export interface SkillCategory {
 
 export const skillsData: SkillCategory[] = [
   {
+    id: "data-analytics",
+    category: "Data Analysis & Business Intelligence",
+    iconName: "BarChart3",
+    description: "Statistical data analysis, relational query optimization, interactive visualization dashboards, and business reporting.",
+    skills: [
+      { name: "Data Analysis & Visualization", level: "Advanced", featured: true },
+      { name: "SQL Query Optimization (+45%)", level: "Advanced", featured: true },
+      { name: "Python Data Stack (Pandas, NumPy)", level: "Advanced", featured: true },
+      { name: "Tableau & Power BI Dashboards", level: "Proficient", featured: true },
+      { name: "Data Modeling & Schema Design", level: "Advanced", featured: true },
+      { name: "ETL Pipelines & Data Cleaning", level: "Proficient", featured: true },
+      { name: "Business Intelligence & Metrics", level: "Advanced", featured: true },
+      { name: "Statistical & Trend Analysis", level: "Proficient", featured: false },
+    ],
+  },
+  {
     id: "languages",
     category: "Languages",
     iconName: "Code",
