@@ -73,10 +73,53 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  color: var(--foreground);
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
   font-feature-settings: "rlig" 1, "calt" 1;
   overflow-x: hidden;
+}
+
+.dark {
+  color: #f8fafc;
+  color-scheme: dark;
+}
+
+.dark body {
+  background-color: #0b0f17;
+  color: #f8fafc;
+}
+
+/* Automatic conversion of dark text to white/light slate in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+  color: #ffffff;
+}
+
+.dark .text-slate-900,
+.dark .text-slate-800,
+.dark .text-black,
+.dark .text-gray-900,
+.dark .text-gray-800,
+.dark .text-zinc-900,
+.dark .text-zinc-800 {
+  color: #ffffff !important;
+}
+
+.dark .text-slate-700,
+.dark .text-slate-600,
+.dark .text-gray-700,
+.dark .text-zinc-700 {
+  color: #e2e8f0 !important;
+}
+
+.dark .text-slate-500,
+.dark .text-gray-500,
+.dark .text-zinc-500 {
+  color: #cbd5e1 !important;
 }
 
 ::selection {
