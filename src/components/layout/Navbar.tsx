@@ -36,6 +36,7 @@ export function Navbar() {
     { name: "AI Suite", href: "/#ai-playground" },
     { name: t("navExperience"), href: "/#experience" },
     { name: t("navProjects"), href: "/projects" },
+    { name: "Blog", href: "/blog" },
     { name: t("navContact"), href: "/contact" },
   ];
 

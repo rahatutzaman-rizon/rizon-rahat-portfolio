@@ -45,10 +45,10 @@ export function AiAssistantWidget() {
   }, [messages, loading]);
 
   const suggestedPrompts = [
-    "Tell me about Rizon's Multi-Tenant ERPs",
-    "What AI & RAG automation has he built?",
-    "What are his Business Analysis skills?",
-    "What is Rizon's primary tech stack?",
+    "Tell me about Rizon's Implevista experience",
+    "What are his primary technical skills?",
+    "Tell me about FlightTrip & FTO Travels",
+    "How can I contact Rizon via WhatsApp or Email?",
   ];
 
   const handleSend = async (textToSend?: string) => {

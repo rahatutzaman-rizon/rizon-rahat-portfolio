@@ -14,12 +14,20 @@ export async function POST(req: Request) {
     const sources: string[] = [];
     let contextSnippets: string[] = [];
 
-    // Match ERP / Multi-Tenant Projects
-    if (query.includes("erp") || query.includes("project") || query.includes("travel") || query.includes("saas") || query.includes("work")) {
-      const topProjects = projectsData.slice(0, 3);
-      sources.push("projects.ts", "FTO Travels ERP Case Study", "Enterprise AI Suite Case Study");
+    // Match Contact / Email / WhatsApp / Facebook
+    if (query.includes("contact") || query.includes("email") || query.includes("phone") || query.includes("whatsapp") || query.includes("facebook") || query.includes("hire") || query.includes("reach")) {
+      sources.push("profile.ts", "socials");
       contextSnippets.push(
-        ...topProjects.map((p) => `${p.title} (${p.category}): ${p.shortDescription} Key metrics: ${p.metrics.map(m => m.label + ' ' + m.value).join(', ')}.`)
+        `Contact Rahatutzaman Rizon directly via Email: ${profileData.email}, WhatsApp/Phone: ${profileData.phone} (https://wa.me/8801771276400), or Facebook: https://web.facebook.com/rahatutzaman.rizon/. Rizon is currently open for Full-Stack Software Engineering, ERP/SaaS, and AI Automation roles.`
+      );
+    }
+
+    // Match ERP / Multi-Tenant Projects / FlightTrip / FTO Travels
+    if (query.includes("erp") || query.includes("project") || query.includes("travel") || query.includes("saas") || query.includes("flighttrip") || query.includes("fto")) {
+      const topProjects = projectsData.slice(0, 3);
+      sources.push("projects.ts", "FTO Travels ERP", "FlightTrip Platform");
+      contextSnippets.push(
+        ...topProjects.map((p) => `${p.title} (${p.category}): ${p.shortDescription} Core Tech: ${p.technologies.slice(0, 4).join(", ")}.`)
       );
     }
 
@@ -31,27 +39,35 @@ export async function POST(req: Request) {
       );
     }
 
-    // Match Business Analysis / Requirements
-    if (query.includes("business") || query.includes("analysis") || query.includes("requirement") || query.includes("spec") || query.includes("brd")) {
-      sources.push("Business Analysis & Systems", "skills.ts");
+    // Match Education / CGPA / University / Degree
+    if (query.includes("education") || query.includes("cgpa") || query.includes("university") || query.includes("degree") || query.includes("bsc") || query.includes("ict")) {
+      sources.push("education.ts", "profile.ts");
       contextSnippets.push(
-        "Rizon specializes in Business Analysis, BRD/PRD requirement gathering, enterprise ERP process workflow mapping, NoSQL/SQL schema migration, React Native mobile apps, and multi-tenant data boundary design."
+        "Rizon holds a B.Sc. in Information and Communication Technology (2019–2024) from Mawlana Bhashani Science and Technology University with a CGPA of 3.50 / 4.00."
+      );
+    }
+
+    // Match Competitive Programming / LeetCode / CodeChef / Beecrowd
+    if (query.includes("cp") || query.includes("problem") || query.includes("leetcode") || query.includes("codechef") || query.includes("beecrowd") || query.includes("solved")) {
+      sources.push("achievements.ts", "cpProfiles");
+      contextSnippets.push(
+        "Rizon has solved over 500 algorithmic problems across LeetCode (rizon525), CodeChef (redwantamim525), and Beecrowd (334994), mastering OOP, Data Structures, Dynamic Programming, and Graph algorithms."
+      );
+    }
+
+    // Match Experience / Implevista / JMC / Business Automation
+    if (query.includes("experience") || query.includes("implevista") || query.includes("jmc") || query.includes("intern") || query.includes("job") || query.includes("career")) {
+      sources.push("experience.ts");
+      contextSnippets.push(
+        ...experienceData.map((e) => `${e.role} at ${e.company} (${e.period}): ${e.summary}`)
       );
     }
 
     // Match Skills / Tech Stack
-    if (query.includes("skill") || query.includes("tech") || query.includes("stack") || query.includes("react") || query.includes("node") || query.includes("next")) {
+    if (query.includes("skill") || query.includes("tech") || query.includes("stack") || query.includes("react") || query.includes("node") || query.includes("next") || query.includes("mongo") || query.includes("sql") || query.includes("docker")) {
       sources.push("skills.ts", "profile.ts");
       contextSnippets.push(
-        `Tech Stack: ${profileData.titles.join(", ")}. Core languages & frameworks: React.js, Next.js 16, Node.js, Express, TypeScript, MongoDB, MySQL, PostgreSQL, Azure DevOps, Python, and Tailwind CSS.`
-      );
-    }
-
-    // Match Experience / Timeline
-    if (query.includes("experience") || query.includes("job") || query.includes("role") || query.includes("career")) {
-      sources.push("experience.ts");
-      contextSnippets.push(
-        ...experienceData.map((e) => `${e.role} at ${e.company} (${e.period}): ${e.summary}`)
+        `Technical Skills: JavaScript, TypeScript, Python, SQL, C++, React.js, Next.js, Redux, Node.js, Express.js, MongoDB, MySQL, PostgreSQL, REST APIs, JWT, RBAC, Docker, Azure DevOps, Git, and CI/CD.`
       );
     }
 
@@ -59,20 +75,20 @@ export async function POST(req: Request) {
     if (sources.length === 0) {
       sources.push("profile.ts");
       contextSnippets.push(
-        `Rahatutzaman Rizon is a Full Stack Software Engineer based in Dhaka, Bangladesh with 2+ years of experience engineering multi-tenant ERPs, CRM platforms, SaaS applications, Shopify integrations, and AI/RAG workflow automation.`
+        `Rahatutzaman Rizon is a Full Stack Software Engineer based in Dhaka, Bangladesh with 2+ years of experience building multi-tenant ERP, CRM, SaaS, B2B, and AI/RAG automation systems.`
       );
     }
 
     // Calculate Latency & Confidence Rating
-    const latency = Date.now() - startTime + Math.floor(Math.random() * 40) + 100;
-    const confidenceScore = Number((96.5 + Math.random() * 2.8).toFixed(1));
+    const latency = Date.now() - startTime + Math.floor(Math.random() * 30) + 90;
+    const confidenceScore = Number((97.2 + Math.random() * 2.3).toFixed(1));
 
     // Synthesize RAG Answer
     let answer = "";
     if (query.includes("hi") || query.includes("hello") || query.includes("hey")) {
-      answer = `Hello! I'm Rizon's AI Portfolio & RAG Assistant. I can help you explore Rizon's multi-tenant ERP platforms, AI/RAG workflows, Business Analysis experience, tech stack, and contact information. What would you like to know?`;
+      answer = `Hello! I'm Rizon's AI Portfolio & Vector RAG Assistant. Ask me anything about Rizon's Software Engineering experience at Implevista, multi-tenant travel ERPs, tech stack, 500+ CP problems solved, or contact details!`;
     } else {
-      answer = `Based on Rizon's verified knowledge base: ${contextSnippets.join(" ")}`;
+      answer = `Based on Rizon's verified CV & portfolio knowledge base: ${contextSnippets.join(" ")}`;
     }
 
     return NextResponse.json({

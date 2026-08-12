@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useEffect, useMemo } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Newspaper,
@@ -14,6 +15,7 @@ import {
   Smartphone,
   Layers,
   Search,
+  BookOpen,
 } from "lucide-react";
 import { useGsapScrollReveal } from "@/hooks/useGsapAnimations";
 
@@ -33,18 +35,34 @@ export interface TechNewsItem {
 export function TechNews() {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [searchFilter, setSearchFilter] = useState<string>("");
+  const [apiData, setApiData] = useState<{
+    dateRangeLabel: string;
+    weekNumber: number;
+    articles: TechNewsItem[];
+  }>({
+    dateRangeLabel: "Loading Rolling Window...",
+    weekNumber: 0,
+    articles: [],
+  });
 
   const scrollRef = useGsapScrollReveal<HTMLDivElement>({
     stagger: 0.1,
     yOffset: 30,
   });
 
-  // Calculate 7-day rolling date window dynamically
-  const dateRangeLabel = useMemo(() => {
-    const now = new Date();
-    const past = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
-    const options: Intl.DateTimeFormatOptions = { month: "short", day: "numeric" };
-    return `${past.toLocaleDateString("en-US", options)} – ${now.toLocaleDateString("en-US", options)}, ${now.getFullYear()}`;
+  useEffect(() => {
+    fetch("/api/tech-news")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.articles) {
+          setApiData({
+            dateRangeLabel: data.dateRangeLabel,
+            weekNumber: data.weekNumber,
+            articles: data.articles,
+          });
+        }
+      })
+      .catch((err) => console.error("Error fetching tech news API:", err));
   }, []);
 
   const newsItems: TechNewsItem[] = [
@@ -137,7 +155,8 @@ export function TechNews() {
   };
 
   const filteredNews = useMemo(() => {
-    return newsItems.filter((item) => {
+    const list = apiData.articles.length > 0 ? apiData.articles : newsItems;
+    return list.filter((item) => {
       const matchesCat = activeCategory === "all" || item.category === activeCategory;
       const matchesQuery =
         searchFilter.trim() === "" ||
@@ -146,7 +165,7 @@ export function TechNews() {
         item.tags.some((t) => t.toLowerCase().includes(searchFilter.toLowerCase()));
       return matchesCat && matchesQuery;
     });
-  }, [activeCategory, searchFilter]);
+  }, [apiData.articles, newsItems, activeCategory, searchFilter]);
 
   return (
     <section id="tech-news" className="py-20 md:py-28 relative">
@@ -159,17 +178,27 @@ export function TechNews() {
             <span>WORLD WEEKLY TECH RADAR & INSIGHTS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            7-Day Engineering & AI Tech Radar
+            7-Day Engineering &amp; AI Tech Radar
           </h2>
           <p className="text-base text-slate-600 dark:text-slate-400">
             Automated rolling insights covering AI/RAG architectures, React Native mobile, NoSQL data migrations, and cloud systems.
           </p>
 
           {/* Dynamic 7-Day Rolling Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-sm">
-            <Calendar className="w-3.5 h-3.5 text-dynamic-primary" />
-            <span>Rolling 7-Day Window: </span>
-            <strong className="text-dynamic-primary font-bold">{dateRangeLabel}</strong>
+          <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-sm">
+              <Calendar className="w-3.5 h-3.5 text-dynamic-primary" />
+              <span>Rolling 7-Day Window: </span>
+              <strong className="text-dynamic-primary font-bold">{apiData.dateRangeLabel || dateRangeLabel}</strong>
+            </div>
+
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-dynamic-primary text-white text-xs font-mono font-bold hover:opacity-90 shadow-md shadow-dynamic-primary/30 transition-transform hover:scale-105"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>Dedicated Blog &amp; Archive →</span>
+            </Link>
           </div>
         </div>
 
